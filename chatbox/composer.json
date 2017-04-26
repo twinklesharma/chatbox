@@ -1,0 +1,12 @@
+{
+    "name": "laravelchat/chatbox",
+    "description": "Chat application for backend",
+    "authors": [
+        {
+            "name": "twinklesharma",
+            "email": "twinkle.sharma@daffodilsw.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
