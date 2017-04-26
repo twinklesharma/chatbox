@@ -29,7 +29,7 @@ From the command line, run:
 # How to integrate Chatbox in laravel
 Firstly you have to register the users in your chat app for this you can use the APIs of quickblox (https://quickblox.com/developers/Users).
 
-After registration of users, open your login balde file and add the following code:
+After registration of users, open your login blade file and add the following code:
 
 `<script type="text/javascript">
  $(document).ready(function(){ 
@@ -41,8 +41,9 @@ After registration of users, open your login balde file and add the following co
  sessionStorage.setItem('pass', pass);  
  });  });
  </script> `
+ 
  Where,
  #myform1 is the id of login form, #login-name is the id of username/email and #login-pass is the id password input field.
- In the above, code we are just storing the user's credentails in a session so that we can use this in connection.js file by which user can open chat app and allowed to chat.
+ In the above, code we are just storing the user's credentails in a session so that we can use this in connection.js which allows user to start chat.
 
 
