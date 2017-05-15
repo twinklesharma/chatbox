@@ -16,7 +16,7 @@
     "LaravelChat\\ChatBox\\": "src/"
     }
     },
-    ,
+ 
     "autoload-dev": {
         "psr-4": {
         "LaravelChat\\ChatBox\\": "src/",
