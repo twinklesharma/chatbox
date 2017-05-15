@@ -19,7 +19,7 @@
  
     "autoload-dev": {
         "psr-4": {
-        "LaravelChat\\ChatBox\\": "src/",
+        "LaravelChat\\ChatBox\\": "src/"
       }
     }
 }
