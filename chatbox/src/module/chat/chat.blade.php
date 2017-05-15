@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>QuickBlox JavaScript Chat code sample</title>
     <link rel="shortcut icon" href="https://quickblox.com/favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('libs/stickerpipe/css/stickerpipe.min.css')}}">
     <link rel="stylesheet" href="{{asset('laravelchat/css/style.css')}}">
@@ -59,6 +60,9 @@
                 <div class="list-header">
                   <h4 class="list-header-title">History</h4>
                 </div>
+                  <div>
+                      <input type="text" id="search_text"  ><button type="button" onclick="search()">search</button>
+                  </div>
                 <div class="list-group pre-scrollable nice-scroll" id="dialogs-list">
 
                   <!-- list of chat dialogs will be here -->
@@ -134,7 +138,15 @@
           <div class="modal-header">
             <h3 class="modal-title">Choose users to create a dialog with</h3>
           </div>
+            
           <div class="modal-body">
+              <h5 class="col-md-12 col-sm-12 col-xs-12">Name:</h5>
+              <input type="text" class="form-control" id="dialog-name-input">
+              <h5 class="col-md-12 col-sm-12 col-xs-12">Tags:</h5>
+              <input type="text" class="form-control" id="dialog-tag-input">
+              <h5 class="col-md-12 col-sm-12 col-xs-12">Hide Your identity:</h5>
+              <input type="checkbox" class="form-control" id="dialog-identity-input">
+              </br>
             <div class="list-group pre-scrollable for-scroll">
               <div id="users_list" class="clearfix"></div>
             </div>
@@ -161,6 +173,10 @@
             <div class="col-md-12 col-sm-12 col-xs-12 new-info">
               <h5 class="col-md-12 col-sm-12 col-xs-12">Name:</h5>
               <input type="text" class="form-control" id="dialog-name-input">
+               <h5 class="col-md-12 col-sm-12 col-xs-12">Tags:</h5>
+              <input type="text" class="form-control" id="dialog-tag-input">
+<!--              <h5 class="col-md-12 col-sm-12 col-xs-12"></h5>
+              <input type="file" id="picture" class="form-control"/>-->
             </div>
             <h5 class="col-md-12 col-sm-12 col-xs-12 push">Add more user (select to add):</h5>
             <div class="list-group pre-scrollable occupants" id="push_usersList">

@@ -24,8 +24,8 @@ function buildMessageHTML(messageText, messageSenderId, messageDateSent, attachm
 			}
 		});
 	}
-
-  var messageHtml =
+            if(messageDateSent !== null){
+              var messageHtml =
 			'<div class="list-group-item" id="'+messageId+'">'+
 				'<time datetime="'+messageDateSent+ '" class="pull-right">'
 					+jQuery.timeago(messageDateSent)+
@@ -37,26 +37,60 @@ function buildMessageHTML(messageText, messageSenderId, messageDateSent, attachm
 				'</p>'
 				+delivered+read+
 			'</div>';
+                } else {
+                   var messageHtml =
+			'<div class="list-group-item" id="'+messageId+'">'+
+				'<time datetime="'+messageDateSent+ '" class="pull-right">'
+					+jQuery.timeago(messageDateSent)+
+				'</time>'+
+
+				'<h4 class="list-group-item-heading">'+messageSenderId+'</h4>'+
+				'<p class="list-group-item-text">'+
+					messageTextHtml +
+				'</p>'
+				+delivered+read+
+			'</div>'; 
+                    
+                }
+                    
+                
   return messageHtml;
 }
 
 // build html for dialogs
-function buildDialogHtml(dialogId, dialogUnreadMessagesCount, dialogIcon, dialogName, dialogLastMessage) {
+function buildDialogHtml(dialogId, dialogUnreadMessagesCount, dialogIcon, dialogName, dialogLastMessage,dialogSentTime, dialogTag) {
   var UnreadMessagesCountShow = '<span class="badge">'+dialogUnreadMessagesCount+'</span>';
       UnreadMessagesCountHide = '<span class="badge" style="display: none;">'+dialogUnreadMessagesCount+'</span>';
 
   var isMessageSticker = stickerpipe.isSticker(dialogLastMessage);
 
+if(dialogSentTime !== null){
   var dialogHtml =
       '<a href="#" class="list-group-item inactive" id='+'"'+dialogId+'"'+' onclick="triggerDialog('+"'"+dialogId+"'"+')">'+
                    (dialogUnreadMessagesCount === 0 ? UnreadMessagesCountHide : UnreadMessagesCountShow)+
         '<h4 class="list-group-item-heading">'+ dialogIcon+'&nbsp;&nbsp;&nbsp;' +
-            '<span>'+dialogName+'</span>' +
-        '</h4>'+
+            '<span>'+dialogName+'</span><span class="fa fa-eye" onclick="hideIdentity('+"'"+currentUser.id+"'"+','+"'"+dialogId+"'"+')" id="eye-icon'+dialogId+'"></span>' +
+            '<time datetime="'+dialogSentTime+ '" class="pull-right" style="font-size: 11px">'
+					+jQuery.timeago(dialogSentTime)+
+				'</time>'+
+        '</h4><span id=tag-text>'+dialogTag+'</span>'+
         '<p class="list-group-item-text last-message">'+
             (dialogLastMessage === null ?  "" : (isMessageSticker ? 'Sticker' : dialogLastMessage))+
         '</p>'+
       '</a>';
+} else {
+    var dialogHtml =
+      '<a href="#" class="list-group-item inactive" id='+'"'+dialogId+'"'+' onclick="triggerDialog('+"'"+dialogId+"'"+')">'+
+                   (dialogUnreadMessagesCount === 0 ? UnreadMessagesCountHide : UnreadMessagesCountShow)+
+        '<h4 class="list-group-item-heading">'+ dialogIcon+'&nbsp;&nbsp;&nbsp;' +
+            '<span>'+dialogName+'</span><span class="fa fa-eye" id="eye-icon'+dialogId+'" onclick="hideIdentity('+"'"+currentUser.id+"'"+','+"'"+dialogId+"'"+')"></span>' +
+           
+        '</h4><span id=tag-text>'+dialogTag+'</span>'+
+        '<p class="list-group-item-text last-message">'+
+            (dialogLastMessage === null ?  "" : (isMessageSticker ? 'Sticker' : dialogLastMessage))+
+        '</p>'+
+      '</a>';
+}
   return dialogHtml;
 }
 

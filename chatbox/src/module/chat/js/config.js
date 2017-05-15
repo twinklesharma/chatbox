@@ -3,7 +3,8 @@ var QBApp = {
     authKey: 'GufnKDkQM3RZHsn',
     authSecret: 'SwnRpB4Fe6VtJrS'
 };
-
+var hide_identity = 0;
+var hide_dialog_id = 0;
 var config = {
     chatProtocol: {
         active: 2
@@ -28,25 +29,27 @@ var config = {
         priceC: '1.99 $'
     }
 };
-
-var QBUser1 = {
-        id: 26518312,
-        name: 'Twinkle sharma',
-        login: 'Twinkle',
-        pass: 'hrhk@1234'
-    },
-    QBUser2 = {
-       id: 26522045,
-        name: 'akansha sharma',
-        login: 'akansha',
-        pass: 'hrhk@1234'
-    },
-    QBUser3 = {
-        id: 26525279,
-        name: 'preetik',
-        login: 'preetik',
-        pass: 'hrhk@1234'
-    };
+var user_login =  sessionStorage.getItem("login");
+   var user_pass =  sessionStorage.getItem("pass");
+//var QBUser1 = {
+//     //   id: 26518312,
+//        name: 'Twinkle',
+//        login: user_login,
+//        pass: user_pass
+//    },
+//    QBUser2 = {
+//    //   id: 26522045,
+//        name: 'akansha ddddddddd',
+//        //full_name:'Akanahsaaaaaaa',
+//        login: 'akansha',
+//        pass: 'hrhk@1234'
+//    },
+//    QBUser3 = {
+//       // id: 26525279,
+//        name: 'preetikllllll',
+//        login: 'Preeti',
+//        pass: 'hrhk@1234'
+//    };
 
 QB.init(QBApp.appId, QBApp.authKey, QBApp.authSecret, config);
 

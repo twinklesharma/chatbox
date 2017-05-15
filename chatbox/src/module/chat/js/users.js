@@ -69,8 +69,17 @@ function mergeUsers(usersItems){
 
 function getUserLoginById(byId) {
 	var userLogin;
+        console.log(JSON.stringify(currentDialog)+'pppppppppppppppp');
+            if(currentUser.id !== byId && typeof currentDialog.data !='undefined'){     
+
+               if(currentDialog.data.hide === true && currentDialog.data.uid === byId){
+              // if(users[currentUser.id].user_tags === 'normal1' && jQuery.inArray(users[byId].user_tags,['primary1','primary2']) !== -1){
+                   return 'Anonymous';
+               }
+                }
+
 	if (users[byId]) {
-		userLogin = users[byId].login;
+		userLogin = (typeof users[byId].full_name != 'undefined')?users[byId].full_name:users[byId].login;
 		return userLogin;
 	}
 }

@@ -79,6 +79,7 @@ function showReadСheckmark(messageId){
 }
 
 function retrieveChatMessages(dialog, beforeDateSent){
+   
     // Load messages history
     $(".load-msg").show(0);
 
@@ -104,15 +105,15 @@ function retrieveChatMessages(dialog, beforeDateSent){
         $("#no-messages-label").addClass('hide');
 
         messages.items.forEach(function(item, i, arr) {
-
-          dialogsMessages.splice(0, 0, item);
-
           var messageId = item._id;
           var messageText = item.message;
           var messageSenderId = item.sender_id;
           var messageDateSent = new Date(item.date_sent*1000);
+          last_msg_time  = messageDateSent;
           var messageSenderLogin = getUserLoginById(messageSenderId);
-
+          
+         
+          
           // send read status
           if (item.read_ids.indexOf(currentUser.id) === -1) {
             sendReadStatus(messageSenderId, messageId, currentDialog._id);
